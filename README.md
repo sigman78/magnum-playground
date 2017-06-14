@@ -1,0 +1,1 @@
+﻿Magnum bootstrap and playground
