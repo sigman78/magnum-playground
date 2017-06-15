@@ -493,7 +493,7 @@ foreach(_component ${Magnum_FIND_COMPONENTS})
         if(_component MATCHES ${_MAGNUM_EXECUTABLE_COMPONENTS})
             add_executable(Magnum::${_component} IMPORTED)
 
-            find_program(MAGNUM_${_COMPONENT}_EXECUTABLE magnum-${_component})
+            find_program(MAGNUM_${_COMPONENT}_EXECUTABLE magnum-${_component} PATH_SUFFIXES magnum)
             mark_as_advanced(MAGNUM_${_COMPONENT}_EXECUTABLE)
 
             if(MAGNUM_${_COMPONENT}_EXECUTABLE)

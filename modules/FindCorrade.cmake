@@ -397,7 +397,7 @@ foreach(_component ${Corrade_FIND_COMPONENTS})
         if(_component MATCHES ${_CORRADE_EXECUTABLE_COMPONENTS})
             add_executable(Corrade::${_component} IMPORTED)
 
-            find_program(CORRADE_${_COMPONENT}_EXECUTABLE corrade-${_component})
+            find_program(CORRADE_${_COMPONENT}_EXECUTABLE corrade-${_component} PATH_SUFFIXES corrade)
             mark_as_advanced(CORRADE_${_COMPONENT}_EXECUTABLE)
 
             if(CORRADE_${_COMPONENT}_EXECUTABLE)
