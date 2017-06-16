@@ -1,14 +1,5 @@
-cmake_minimum_required(VERSION 2.8.12)
-project(MagnumBootstrap)
-
-# CMake policies: enable MACOSX_RPATH by default
-if(POLICY CMP0042)
-    cmake_policy(SET CMP0042 NEW)
-endif()
-# Don't treat imported targets with :: as files
-if(POLICY CMP0028)
-    cmake_policy(SET CMP0028 NEW)
-endif()
+#
+# ##################################################
 
 find_package(Magnum REQUIRED Sdl2Application)
 
@@ -19,16 +10,20 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/configure.h.cmake
 
 corrade_add_resource(MagnumBootstrap_RESOURCES resources.conf)
 
-add_executable(magnum-bootstrap
+add_executable(MagnumBootstrap
     main.cpp
     ${MagnumBootstrap_RESOURCES})
 
-target_include_directories(magnum-bootstrap PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
-target_link_libraries(magnum-bootstrap
+target_include_directories(MagnumBootstrap PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
+target_link_libraries(MagnumBootstrap
     Magnum::Application
     Magnum::Magnum)
 
-install(TARGETS magnum-bootstrap DESTINATION ${MAGNUM_BINARY_INSTALL_DIR})
-# install(FILES README.md DESTINATION ${MAGNUM_DATA_INSTALL_DIR}/examples)
+install(TARGETS MagnumBootstrap DESTINATION ${MAGNUM_BINARY_INSTALL_DIR})
 
-# set_target_properties(magnum-bootstrap PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/../bin/")
+# set_target_properties(MagnumBootstrap PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/../bin/")
+
+if(TESTS)
+    find_package(Corrade REQUIRED TestSuite)
+    add_subdirectory(Test)
+endif()

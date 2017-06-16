@@ -1,4 +1,4 @@
 #
 #
 
-corrade_add_test(DummyTest DummyTest.cpp LIBRARIES Magnum)
+corrade_add_test(DummyTest DummyTest.cpp)

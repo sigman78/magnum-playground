@@ -1,6 +1,6 @@
 #include <Corrade/TestSuite/Tester.h>
 
-struct DummyTest: TestSuite::Tester {
+struct DummyTest: Corrade::TestSuite::Tester {
     explicit DummyTest();
 
     void test1();
@@ -9,7 +9,7 @@ struct DummyTest: TestSuite::Tester {
 
 DummyTest::DummyTest() {
     addTests({&DummyTest::test1,
-              &ArrayTest::test2});
+              &DummyTest::test2});
 }
 
 void DummyTest::test1() {
