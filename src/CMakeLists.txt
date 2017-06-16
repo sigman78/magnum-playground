@@ -21,7 +21,10 @@ target_link_libraries(MagnumBootstrap
 
 install(TARGETS MagnumBootstrap DESTINATION ${MAGNUM_BINARY_INSTALL_DIR})
 
-# set_target_properties(MagnumBootstrap PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/../bin/")
+set_target_properties(MagnumBootstrap PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY_DEBUG "${CMAKE_SOURCE_DIR}/bin/"
+    RUNTIME_OUTPUT_DIRECTORY_RELEASE "${CMAKE_SOURCE_DIR}/bin/"
+    DEBUG_POSTFIX "-d")
 
 if(TESTS)
     find_package(Corrade REQUIRED TestSuite)

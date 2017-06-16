@@ -1,4 +1,4 @@
-﻿#include <Corrade/Corrade.h>
+#include <Corrade/Corrade.h>
 #include <Corrade/Utility/Directory.h>
 #include <Corrade/Utility/Debug.h>
 #include <iostream>
