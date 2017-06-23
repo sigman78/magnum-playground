@@ -13,7 +13,12 @@ if(POLICY CMP0028)
     cmake_policy(SET CMP0028 NEW)
 endif()
 
-find_package(Magnum REQUIRED)
-#add_subdirectory(3rd)
+option(BUILD_LOCAL "Build with local magnum" OFF)
+
+if(BUILD_LOCAL)
+    add_subdirectory(3rd)
+else()
+    find_package(Magnum REQUIRED)
+endif()
 
 add_subdirectory(src)
