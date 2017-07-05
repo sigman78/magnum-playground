@@ -9,3 +9,5 @@ pkg
 *.kate-swp
 *.pkg.tar.xz
 CMakeLists.txt.user*
+Win32
+Win64
