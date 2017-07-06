@@ -36,12 +36,12 @@ endif()
 if(WIN32)
     file(TO_NATIVE_PATH "${CMAKE_SOURCE_DIR}/bin/assets" ASSETS_DST)
     file(TO_NATIVE_PATH "${CMAKE_SOURCE_DIR}/assets/" ASSETS_SRC)
-    add_custom_command(TARGET Project PRE_BUILD
+    add_custom_command(TARGET Project POST_BUILD
         COMMAND mklink /D ${ASSETS_DST} ${ASSETS_SRC} || exit /b 0)
 else()
-    add_custom_command(TARGET Project PRE_BUILD
+    add_custom_command(TARGET Project POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E create_symlink 
-        "${CMAKE_SOURCE_DIR}/bin/" "${CMAKE_SOURCE_DIR}/assets/")
+        "${CMAKE_SOURCE_DIR}/assets" "${CMAKE_SOURCE_DIR}/bin/assets")
 endif()
 
 # Cleanup leftovers build directories
