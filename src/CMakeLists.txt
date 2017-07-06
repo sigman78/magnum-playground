@@ -54,5 +54,5 @@ if(WIN32)
         "${NATIVE_ROOT_DIR}Win32")
     add_custom_command(TARGET Project POST_BUILD
         COMMAND rmdir /S /Q
-        "${NATIVE_ROOT_DIR}Win64")
+        "${NATIVE_ROOT_DIR}x64")
 endif()
