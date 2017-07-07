@@ -9,7 +9,7 @@
 
 #include "configure.h"
 
-using namespace Corrade::Utility;
+using namespace Magnum;
 
 class Application: public Magnum::Platform::Sdl2Application
 {
@@ -24,16 +24,18 @@ private:
 Application::Application(const Arguments& args)
 : Magnum::Platform::Application{args, Configuration{}.setTitle("Application")}
 {
-    Debug() << "Sandboxed: " << Directory::isSandboxed();
-    Debug() << "Executable dir: " << Directory::executableLocation();
-    Debug() << "Home: " << Directory::home();
-    Debug() << "Tmp: " << Directory::tmp();
+    Debug() << "Sandboxed: "        << Utility::Directory::isSandboxed();
+    Debug() << "Executable dir: "   << Utility::Directory::executableLocation();
+    Debug() << "Home: "             << Utility::Directory::home();
+    Debug() << "Tmp: "              << Utility::Directory::tmp();
 }
 
 void Application::drawEvent() {
     Magnum::Renderer::setClearColor(Magnum::Color4::magenta());
     Magnum::defaultFramebuffer.clear(Magnum::FramebufferClear::Color);
+
     // draw here
+
     swapBuffers();
 }
 
