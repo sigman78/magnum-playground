@@ -1,7 +1,11 @@
 #
 # ##################################################
 
-find_package(Magnum REQUIRED Sdl2Application)
+find_package(Magnum REQUIRED
+    MeshTools
+    Primitives
+    Shaders
+    Sdl2Application)
 
 set_directory_properties(PROPERTIES CORRADE_USE_PEDANTIC_FLAGS ON)
 
@@ -17,7 +21,10 @@ add_executable(Project
 target_include_directories(Project PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
 target_link_libraries(Project
     Magnum::Application
-    Magnum::Magnum)
+    Magnum::Magnum
+    Magnum::MeshTools
+    Magnum::Primitives
+    Magnum::Shaders)
 
 #install(TARGETS Project DESTINATION ${MAGNUM_BINARY_INSTALL_DIR})
 
