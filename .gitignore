@@ -11,3 +11,4 @@ pkg
 CMakeLists.txt.user*
 Win32
 Win64
+.vs
