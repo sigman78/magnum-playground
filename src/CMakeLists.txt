@@ -2,10 +2,13 @@
 # ##################################################
 
 find_package(Magnum REQUIRED
+#    TgaImporter
     MeshTools
     Primitives
     Shaders
     Sdl2Application)
+
+# find_package(MagnumPlugins REQUIRED StbImageImporter)
 
 set_directory_properties(PROPERTIES CORRADE_USE_PEDANTIC_FLAGS ON)
 

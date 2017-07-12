@@ -1,4 +1,5 @@
 #include <Corrade/Corrade.h>
+#include <Corrade/Containers/ArrayView.h>
 #include <Corrade/Utility/Directory.h>
 
 #include <Magnum/Buffer.h>
@@ -14,10 +15,9 @@
 #include <Magnum/MeshTools/Interleave.h>
 #include <Magnum/MeshTools/CompressIndices.h>
 
-#include <Magnum/AbstractShaderProgram.h>
 #include <Magnum/Shader.h>
+#include <Magnum/AbstractShaderProgram.h>
 
-#include <Corrade/Containers/ArrayView.h>
 #include <Corrade/PluginManager/Manager.h>
 #include <Magnum/Trade/AbstractImporter.h>
 #include <Magnum/Trade/ImageData.h>
@@ -132,12 +132,12 @@ Application::Application(const Arguments& args)
 
 	// load texture
 	PluginManager::Manager<Trade::AbstractImporter> manager{ MAGNUM_PLUGINS_IMPORTER_DIR };
-	std::unique_ptr<Trade::AbstractImporter> importer = manager.loadAndInstantiate("TgaImporter");
+	std::unique_ptr<Trade::AbstractImporter> importer = manager.loadAndInstantiate("AnyImageImporter");
 	if (!importer) std::exit(1);
 
-	auto imagePath = Utility::Directory::join("assets", "uv_map.tga");
-	auto imageBits = Utility::Directory::read(imagePath);
-	if (!importer->openData(imageBits))
+	auto exePath = Utility::Directory::path(Utility::Directory::executableLocation());
+	auto imagePath = Utility::Directory::join(exePath, "assets/uv_map.tga");
+	if (!importer->openFile(imagePath))
 		std::exit(2);
 
 	std::optional<Trade::ImageData2D> image = importer->image2D(0);
